@@ -7,4 +7,4 @@ RUN su codespace -c "curl -fsSL https://install.julialang.org | sh -s -- -y"
 RUN su codespace -c "mkdir -p ~/.julia/config \
 && wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/sample.startup.jl -O ~/.julia/config/startup.jl"
 
-# RUN su codespace -c 'julia -e "using Pkg; Pkg.activate(\".\"); Pkg.add(\"IJulia\"); ENV[\"PYTHON\"]=\"\"; Pkg.add(\"PyPlot\")"'
+# RUN su codespace -c 'julia -e "using Pkg; Pkg.activate(\".\"); Pkg.add(\"IJulia\"); ENV[\"PYTHON\"]=\"\"; Pkg.add(url=\"https://github.com/JuliaPy/PyPlot.jl.git#master\"))"'
