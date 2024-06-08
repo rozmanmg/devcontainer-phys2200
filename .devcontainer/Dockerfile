@@ -1,4 +1,4 @@
-FROM 
+# FROM 
 
 # Install julia
 # https://github.com/JuliaLang/juliaup/issues/253#issuecomment-1969737244
