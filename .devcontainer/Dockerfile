@@ -10,6 +10,10 @@ RUN su codespace -c "mkdir -p ~/.julia/config \
 # (Pre)install selected Julia packages
 RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]);'"
 
+# Fix PyPlot. This step is needed temporarily, until the pull request https://github.com/JuliaPy/PyPlot.jl/pull/583 is merged
+RUN su - codespace -c "mv ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl.bak \
+&& cp .devcontainer/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/ || true"
+
 # Disable annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
 
