@@ -1,0 +1,29 @@
+#
+# Rename this file to '.gitignore' (without quotes)
+# Place it into your git repository
+#
+
+# Ignore all
+*
+
+# Unignore julia files
+!*.jl
+
+# Unignore jupyter notebook files
+!*.ipynb
+
+# Unignore markdown files
+!*.md
+
+# Unignore project files
+!Project.toml
+!Manifest.toml
+
+# Unignore .gitignore
+!.gitignore
+
+# Unignore subdirectories
+!*/
+
+# Ignore checkpoint files in subdirectories
+*/.ipynb_checkpoints/
