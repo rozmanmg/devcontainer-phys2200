@@ -9,5 +9,8 @@ RUN su codespace -c "mkdir -p ~/.julia/config \
 
 RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add(\"IJulia\");'"
 
+# Disable annoyances
+RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
+
 # RUN su codespace -c '. ~/.bashrc \
 # && julia -e "using Pkg; Pkg.activate(\".\"); Pkg.add(\"IJulia\"); ENV[\"PYTHON\"]=\"\"; Pkg.add(url=\"https://github.com/JuliaPy/PyPlot.jl.git#master\")"'
