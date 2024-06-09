@@ -10,6 +10,5 @@ RUN su codespace -c "mkdir -p ~/.julia/config \
 # RUN su codespace -c '. ~/.bashrc \
 # && julia -e "using Pkg; Pkg.activate(\".\"); Pkg.add(\"IJulia\"); ENV[\"PYTHON\"]=\"\"; Pkg.add(url=\"https://github.com/JuliaPy/PyPlot.jl.git#master\")"'
 
-RUN su codespace -c ". ~/.bashrc \
-&& julia -e \"pwd()\" "
+RUN su codespace -c ". ~/.bashrc && julia --version"
 # \"using Pkg; Pkg.activate(\".\"); ENV[\"PYTHON\"]=\"\"; Pkg.instantiate()\""
