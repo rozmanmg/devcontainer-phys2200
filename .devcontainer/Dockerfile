@@ -12,7 +12,7 @@ RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(t
 
 # Fix PyPlot. This step is needed temporarily, until the pull request https://github.com/JuliaPy/PyPlot.jl/pull/583 is merged
 RUN su - codespace -c "mv ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl.bak \
-&& cp /workspaces/$RepositoryName/.devcontainer/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/ || true"
+&& cp /workspaces/devcontainer-test/.devcontainer/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/ || true"
 
 # Disable annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
