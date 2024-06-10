@@ -17,5 +17,6 @@ RUN su - codespace -c "mv ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl ~/.ju
 # Disable annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
 
-# RUN su codespace -c '. ~/.bashrc \
-# && julia -e "using Pkg; Pkg.activate(\".\"); Pkg.add(\"IJulia\"); ENV[\"PYTHON\"]=\"\"; Pkg.add(url=\"https://github.com/JuliaPy/PyPlot.jl.git#master\")"'
+# Add bash setting specific for the class
+RUN su codespace -c "wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/bash_phys2200.txt -O ~/.bash_phys2200"
+RUN su codespace -c "echo \"[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200\" >> ~/.bashrc || true"
