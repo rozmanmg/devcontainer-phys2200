@@ -3,5 +3,5 @@
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "julia -e \"using Pkg; Pkg.activate(\".\"); Pkg.instantiate()\"",
-  "postCreateCommand": "julia -e \"pwd(); using Pkg; Pkg.activate(\".\"); Pkg.instantiate()\"",
+  "postCreateCommand": "julia -e \"using Pkg; Pkg.activate(\"/workspaces/devcontainer-test\"); Pkg.instantiate()\"",
 }
