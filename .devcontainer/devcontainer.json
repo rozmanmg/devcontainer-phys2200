@@ -7,5 +7,5 @@
   // it runs before the dev container is created and the workspace folder is 
   // mounted and therefore does not have access to the files in the workspace folder. 
   // "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\"/workspaces/devcontainer-test\"); Pkg.instantiate()'",
-  "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\"/workspaces/devcontainer-test\"); Pkg.instantiate()'",
+  "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.instantiate()'",
 }
