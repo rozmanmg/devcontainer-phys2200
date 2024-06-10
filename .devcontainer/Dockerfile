@@ -11,7 +11,7 @@ RUN su codespace -c "mkdir -p ~/.julia/config \
 RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]);'"
 
 # Fix PyPlot. This step is needed temporarily, until the pull request https://github.com/JuliaPy/PyPlot.jl/pull/583 is merged
-RUN su - codespace -c "mv ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia//packages/PyPlot/2MlrT/src/colormaps.jl.bak \
+RUN su - codespace -c "mv ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl.bak \
 && wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/fix.colormaps.jl -O ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl || true"
 
 # Disable annoyances
