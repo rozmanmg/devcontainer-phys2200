@@ -7,12 +7,12 @@ RUN su codespace -c "curl -fsSL https://install.julialang.org | sh -s -- -y"
 RUN su codespace -c "mkdir -p ~/.julia/config \
 && wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/sample.startup.jl -O ~/.julia/config/startup.jl"
 
-# (Pre)install selected Julia packages
-RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]);'"
+# (Pre)install selected Julia packages. Use PyPlot#master unless the release includes the pull request https://github.com/JuliaPy/PyPlot.jl/pull/583
+RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\"]); Pkg.add(name=\"PyPlot\", rev=\"master\")'"
 
 # Fix PyPlot. This step is needed temporarily, until the pull request https://github.com/JuliaPy/PyPlot.jl/pull/583 is merged
-RUN su - codespace -c "mv ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl.bak \
-&& wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/fix.colormaps.jl -O ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl || true"
+# RUN su - codespace -c "mv ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl.bak \
+# && wget --no-check-certificate https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads/fix.colormaps.jl -O ~/.julia/packages/PyPlot/2MlrT/src/colormaps.jl || true"
 
 # Disable annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
