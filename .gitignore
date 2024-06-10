@@ -27,3 +27,4 @@
 
 # Ignore checkpoint files in subdirectories
 */.ipynb_checkpoints/
+.ipynb_checkpoints/
