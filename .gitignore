@@ -25,6 +25,10 @@
 # Unignore subdirectories
 !*/
 
+# unignore .devcontainer content
+!devcontainer.json
+!Dockerfile
+
 # Ignore checkpoint files in subdirectories
 */.ipynb_checkpoints/
 .ipynb_checkpoints/
