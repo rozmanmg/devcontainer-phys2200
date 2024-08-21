@@ -1,8 +1,5 @@
 FROM mcr.microsoft.com/devcontainers/universal:linux 
 
-# Free some space
-"initializeCommand": "docker system prune --all --force"
-
 # Install julia
 RUN su - codespace -c "curl -fsSL https://install.julialang.org | sh -s -- -y" 
 
