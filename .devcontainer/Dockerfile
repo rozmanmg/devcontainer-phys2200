@@ -11,7 +11,7 @@ RUN su - codespace -c "mkdir -p ~/.julia/config \
 && wget --no-check-certificate ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
 
 # (Pre)install selected Julia packages.
-RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"])'"
+RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
