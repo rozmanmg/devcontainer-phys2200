@@ -2,11 +2,12 @@
   "build": { "dockerfile": "Dockerfile" },
 
   // Increase disk space
-  "hostRequirements": {
+  // "hostRequirements": {
    // "cpus": 8,
    // "memory": "8gb",
    "storage": "64gb"
-  },
+  // },
+  
   // Free some disk space
   // "initializeCommand": "docker system prune --all --force",
   
