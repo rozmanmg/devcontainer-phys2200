@@ -1,8 +1,14 @@
 {
   "build": { "dockerfile": "Dockerfile" },
 
+  // Increase disk space
+  "hostRequirements": {
+   // "cpus": 8,
+   // "memory": "8gb",
+   "storage": "64gb"
+}
   // Free some disk space
-  "initializeCommand": "docker system prune --all --force",
+  // "initializeCommand": "docker system prune --all --force",
   
   // Use 'postCreateCommand' to run commands after the container is created. 
   // The action below is taking place in the /workspace/<github-repo-name> folder. 
