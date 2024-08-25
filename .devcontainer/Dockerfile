@@ -1,8 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/universal:linux 
-# FROM mcr.microsoft.com/devcontainers/base:debian
 
 # Install ffmpeg
-# RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
 
 # Install julia
 RUN su - codespace -c "curl -fsSL https://install.julialang.org | sh -s -- -y" 
