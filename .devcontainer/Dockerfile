@@ -1,5 +1,5 @@
-# FROM mcr.microsoft.com/devcontainers/universal:linux 
-FROM mcr.microsoft.com/devcontainers/base:debian
+FROM mcr.microsoft.com/devcontainers/universal:linux 
+# FROM mcr.microsoft.com/devcontainers/base:debian
 
 # Install ffmpeg
 # RUN apt-get update && apt-get install -y ffmpeg
@@ -15,7 +15,8 @@ RUN su - codespace -c "mkdir -p ~/.julia/config \
 && wget --no-check-certificate ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
 
 # (Pre)install selected Julia packages.
-RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
+# RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
+RUN su - codespace -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"])'"
 
 # Disable Jupyter annoyances
 RUN su - codespace -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
