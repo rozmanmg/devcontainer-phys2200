@@ -1,12 +1,12 @@
 # FROM mcr.microsoft.com/devcontainers/universal:linux 
-FROM mcr.microsoft.com/vscode/devcontainers/universal:2-linux
+FROM mcr.microsoft.com/devcontainers/universal:2-linux
 
 # Non-root user of the image
 ARG USERNAME="codespace"
 # ARG USERNAME="vscode"
 
 # Install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg
+# RUN apt-get update && apt-get install -y ffmpeg
 
 # Install julia
 RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y" 
