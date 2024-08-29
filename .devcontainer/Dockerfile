@@ -1,9 +1,9 @@
 # FROM mcr.microsoft.com/devcontainers/universal:linux 
-FROM mcr.microsoft.com/devcontainers/base:debian
+# FROM mcr.microsoft.com/devcontainers/base:debian
 
 # Non-root user of the image
-# ARG USERNAME="codespace"
-ARG USERNAME="vscode"
+ARG USERNAME="codespace"
+# ARG USERNAME="vscode"
 
 # Install ffmpeg
 RUN apt-get update && apt-get install -y ffmpeg
