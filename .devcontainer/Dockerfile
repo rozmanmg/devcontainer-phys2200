@@ -1,5 +1,5 @@
 # FROM mcr.microsoft.com/devcontainers/universal:linux 
-# FROM mcr.microsoft.com/devcontainers/base:debian
+FROM mcr.microsoft.com/vscode/devcontainers/universal:2-linux
 
 # Non-root user of the image
 # ARG USERNAME="codespace"
