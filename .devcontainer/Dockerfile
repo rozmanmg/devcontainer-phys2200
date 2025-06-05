@@ -9,7 +9,7 @@ ARG USERNAME="codespace"
 # RUN apt-get update && apt-get install -y ffmpeg
 
 # Install julia
-RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y" 
+RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
 
 # URL for downloads of the course-specific files
 ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_24F/downloads"
