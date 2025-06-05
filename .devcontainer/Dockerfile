@@ -8,7 +8,7 @@ ARG USERNAME="codespace"
 # Install ffmpeg
 # RUN apt-get update && apt-get install -y ffmpeg
 
-# Install julia
+# Install julia; keep the same juliaup channel for the whole semester
 RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
 
 # URL for downloads of the course-specific files
