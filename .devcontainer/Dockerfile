@@ -1,6 +1,6 @@
 # FROM mcr.microsoft.com/devcontainers/universal:linux 
 # FROM mcr.microsoft.com/devcontainers/universal:2-linux
-FROM mcr.microsoft.com/devcontainers/universal:dev-linux
+FROM mcr.microsoft.com/devcontainers/universal:latest
 
 # Non-root user of the image
 ARG USERNAME="codespace"
