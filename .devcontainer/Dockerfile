@@ -8,8 +8,12 @@ ARG USERNAME="codespace"
 # Install ffmpeg
 # RUN apt-get update && apt-get install -y ffmpeg
 
-# Install julia; keep the same juliaup channel for the whole semester
+# Install julia; set a juliaup channel to keep it the same for the whole semester
 RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
+
+# Disable all juliaup automatic updates
+RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
+&& juliaup config startupselfupdateinterval 0 && juliaup config versionsdbupdateinterval 0"
 
 # URL for downloads of the course-specific files
 ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_25F/downloads"
