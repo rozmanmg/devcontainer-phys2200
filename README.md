@@ -10,7 +10,7 @@ Configure a Virtual Machine aka devcontainer aka GitHub codespaces for a 'Comput
 
 ## Quick start:
 
-1. Clone this repository, or copy the repository's content while keeping the directory structure. 
+1. Clone this repository, or use it as a template, or copy the repository's content while keeping the directory structure. 
 2. In your cloned repository, navigate to repository's root directory (../devcontainer-phys2200/ in my case)
 3. Click the green `Code` button, then click the `Codespaces` tab.
 4. Click the `Create codespace on main` button.
