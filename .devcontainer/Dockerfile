@@ -12,7 +12,7 @@ ARG USERNAME="codespace"
 # RUN apt-get update && apt-get install -y ffmpeg
 
 # Install julia; set a juliaup channel to keep it the same for the whole semester
-RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.12" 
+RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
 
 # Disable all juliaup automatic updates
 RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
