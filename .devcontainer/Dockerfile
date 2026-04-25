@@ -25,7 +25,7 @@ ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
 
 # Add startup.jl specific for the course
 RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
-&& wget ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
+&& wget --tries=1 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
 
 # (Pre)install selected Julia packages.
 RUN su - ${USERNAME} -c "julia -e using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
@@ -35,5 +35,5 @@ RUN su - ${USERNAME} -c "julia -e using Pkg; Pkg.activate(temp=true); Pkg.add([\
 RUN su - ${USERNAME} -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
 
 # Add bash setting specific for the class
-RUN su - ${USERNAME} -c "wget ${URL}/bash_phys2200.txt -O ~/.bash_phys2200"
+RUN su - ${USERNAME} -c "wget --tries=1 ${URL}/bash_phys2200.txt -O ~/.bash_phys2200"
 RUN su - ${USERNAME} -c "echo \"[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200\" >> ~/.bashrc || true"
