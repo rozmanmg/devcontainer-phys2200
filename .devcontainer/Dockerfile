@@ -28,8 +28,8 @@ RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
 && wget ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl"
 
 # (Pre)install selected Julia packages.
-RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
-# RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"])'"
+RUN su - ${USERNAME} -c "julia -e using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
+# RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
 RUN su - ${USERNAME} -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
