@@ -14,7 +14,7 @@ ARG USERNAME="codespace"
 # # Install julia; set a juliaup channel to keep it the same for the whole semester
 # RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
 # Install julia; set a julia version to keep it the same for the whole semester
-RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default 1.12.6" 
+RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.12.6" 
 
 # Disable all juliaup automatic updates
 RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
