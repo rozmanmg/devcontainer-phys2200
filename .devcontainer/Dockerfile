@@ -36,4 +36,4 @@ RUN su - ${USERNAME} -c "jupyter labextension disable \"@jupyterlab/apputils-ext
 
 # Add bash setting specific for the class
 RUN su - ${USERNAME} -c "wget --tries=2 --timeout=2 ${URL}/bash_phys2200.txt -O ~/.bash_phys2200 || true"
-RUN su - ${USERNAME} -c "echo \"[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200\" >> ~/.bashrc || true"
+RUN su - ${USERNAME} -c 'echo "[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200" >> ~/.bashrc || true'
