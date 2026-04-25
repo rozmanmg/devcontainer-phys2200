@@ -6,7 +6,7 @@ Configure a Virtual Machine aka devcontainer aka GitHub codespaces for a 'Comput
 
 1. The container uses `mcr.microsoft.com/devcontainers/universal:latest` which is a prebuilt container image published by Microsoft. Presumably, GitHub doesn't charge for the disk space used by prebuilt 'official' images. The image comes with non-root container user named `codespace`.
 2. The build process installs IJulia. This step is mandatory for using Jupyter Julia notebooks.
-3. The build process installs PyPlot. This step is only needed if PyPlot is used. 
+3. The build process installs PythonPlot. This step is only needed if PythonPlot is used. If you are not using PythonPlot, edit the DOCKERFILE as needed. 
 
 ## Quick start:
 
