@@ -19,7 +19,7 @@ RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
 && juliaup config startupselfupdateinterval 0 && juliaup config versionsdbupdateinterval 0"
 
 # URL for downloads of the course-specific files
-ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_25F/downloads"
+ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
 
 # Add startup.jl specific for the course
 RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
