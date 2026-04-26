@@ -28,7 +28,7 @@ RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
 && wget --tries=2 --timeout=2 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl || true "
 
 # (Pre)install selected Julia packages.
-RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
+# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
 # RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
