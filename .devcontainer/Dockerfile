@@ -24,7 +24,7 @@ RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
 ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
 
 # Add startup.jl specific for the course
-RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
+RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config && pwd \
 && cp sample.startup.jl ~/.julia/config/startup.jl || true"
 # RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
 # && wget --tries=2 --timeout=2 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl || true "
