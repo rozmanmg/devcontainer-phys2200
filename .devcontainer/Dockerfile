@@ -37,5 +37,6 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 RUN su - ${USERNAME} -c "jupyter labextension disable \"@jupyterlab/apputils-extension:announcements\" || true" 
 
 # Add bash setting specific for the class
-RUN su - ${USERNAME} -c "wget --tries=2 --timeout=2 ${URL}/bash_phys2200.txt -O ~/.bash_phys2200 || true"
+COPY --chown=${USERNAME}:${USERNAME} bash_phys2200.txt /home/${USERNAME}/.bash_phys2200
+# RUN su - ${USERNAME} -c "wget --tries=2 --timeout=2 ${URL}/bash_phys2200.txt -O ~/.bash_phys2200 || true"
 RUN su - ${USERNAME} -c 'echo "[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200" >> ~/.bashrc || true'
