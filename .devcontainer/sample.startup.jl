@@ -1,6 +1,6 @@
 push!(LOAD_PATH, ".")
 
-ENV["JULIA_NUM_THREADS"] = 2
+ENV["JULIA_CONDAPKG_VERBOSITY"] = -1
 
 try
     import Pkg
