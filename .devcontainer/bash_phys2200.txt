@@ -1,0 +1,11 @@
+# use arrow keys for command history navigation
+# https://stackoverflow.com/a/1030206/5145820
+if [[ $- == *i* ]]
+then
+    bind '"\e[A": history-search-backward'
+    bind '"\e[B": history-search-forward'
+fi
+
+alias ll='/usr/bin/ls -l --color=never'
+
+export JULIA_NUM_THREADS=auto
