@@ -1,8 +1,4 @@
-# FROM mcr.microsoft.com/devcontainers/universal:linux 
-# FROM mcr.microsoft.com/devcontainers/universal:2-linux
 FROM mcr.microsoft.com/devcontainers/universal:latest
-# FROM mcr.microsoft.com/devcontainers/base:ubuntu
-# FROM mcr.microsoft.com/devcontainers/python:3
 
 # Non-root user of the image
 ARG USERNAME="codespace"
@@ -21,7 +17,7 @@ RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
 && juliaup config startupselfupdateinterval 0 && juliaup config versionsdbupdateinterval 0"
 
 # URL for downloads of the course-specific files
-ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
+# ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
 
 # Add startup.jl specific for the course
 RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config"
