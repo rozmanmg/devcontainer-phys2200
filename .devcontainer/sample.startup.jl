@@ -1,6 +1,7 @@
 push!(LOAD_PATH, ".")
 
-ENV["JULIA_CONDAPKG_VERBOSITY"] = -1
+ENV["JULIA_CONDAPKG_VERBOSITY"] = "-1"
+ENV["JULIA_CONDAPKG_LOG"] = "warn"
 
 try
     import Pkg
