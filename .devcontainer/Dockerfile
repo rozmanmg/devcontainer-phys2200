@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/devcontainers/universal:latest
 ARG USERNAME="codespace"
 # ARG USERNAME="vscode"
 
+# Update everything
+# RUN apt-get update && apt-get upgrade -y
+
 # Install ffmpeg
 # RUN apt-get update && apt-get install -y ffmpeg
 
