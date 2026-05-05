@@ -17,5 +17,5 @@
   // it runs before the /workspace folder is mounted and therefore does not 
   // have access to files in the /workspace/<github-repo-name> folder. 
   // "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.instantiate()'"
-  "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
+  // "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
 }
