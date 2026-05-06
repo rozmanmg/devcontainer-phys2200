@@ -16,6 +16,7 @@
   // The Dockerfile cannot be used for this part of the container setup since 
   // it runs before the /workspace folder is mounted and therefore does not 
   // have access to files in the /workspace/<github-repo-name> folder. 
+  //
+  // Install Julia packages as required by the provided Project.toml
   "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.instantiate()'"
-  // "postCreateCommand": "julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
 }
