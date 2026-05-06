@@ -28,7 +28,7 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 # RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
 # && wget --tries=2 --timeout=2 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl || true "
 
-# Prepare python environment
+# Prepare reproducible python environment for PythonPlot
 RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
 RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
 
