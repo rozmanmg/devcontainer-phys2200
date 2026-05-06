@@ -1,7 +1,7 @@
 {
   "build": { "dockerfile": "Dockerfile" },
 
-  // Increase disk space
+  // Change the disk space, the number of CPUs, and RAM. (Not always possible.)
   // "hostRequirements": {
    // "cpus": 8,
    // "memory": "8gb",
