@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/devcontainers/universal:latest
 ARG USERNAME="codespace"
 # ARG USERNAME="vscode"
 
+# Use the same version of python as jupyter server running in the container
+ARG PYTHONVER="3.12.1"
+
 # Update everything
 # RUN apt-get update && apt-get upgrade -y
 
@@ -34,6 +37,7 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 # Prepare reproducible python environment for PythonPlot
 # RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
 # RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
+RUN su - ${USERNAME} -c "conda config --append channels conda-forge -y && conda install python=3.12.1 -y && conda install matplotlib || true"
 
 # (Pre)install selected Julia packages.
 # RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
