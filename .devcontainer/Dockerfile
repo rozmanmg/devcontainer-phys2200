@@ -37,7 +37,7 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 # Prepare reproducible python environment for PythonPlot
 # RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
 # RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
-RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} -y && conda install matplotlib PyQT -y && conda clean --all -y || true"
+RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} -y && conda clean --all -y || true"
 
 # (Pre)install selected Julia packages.
 # RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
