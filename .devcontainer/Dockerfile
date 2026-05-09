@@ -30,7 +30,7 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} matplotlib ipywidgets -y && conda clean --all -y || true"
 
 # Install Julia
-# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\"])'"
+RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\"])'"
 # RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
