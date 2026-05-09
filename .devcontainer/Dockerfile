@@ -14,7 +14,7 @@ ARG PYTHONVER="3.12.1"
 # RUN apt-get update && apt-get install -y ffmpeg
 
 # Install software for converting jupyter notebooks to pdf
-# apt-get install inkscape pandoc texlive-xetex
+# RUN apt-get update && apt-get install -y inkscape pandoc texlive-xetex
 
 # # Install julia; set a juliaup channel to keep it the same for the whole semester
 # RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
