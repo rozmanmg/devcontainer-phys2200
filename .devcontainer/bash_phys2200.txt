@@ -1,5 +1,5 @@
-# use arrow keys for command history navigation
-# https://stackoverflow.com/a/1030206/5145820
+# Use arrow keys for command history navigation
+# See https://stackoverflow.com/a/1030206/5145820 for explanation
 if [[ $- == *i* ]]
 then
     bind '"\e[A": history-search-backward'
