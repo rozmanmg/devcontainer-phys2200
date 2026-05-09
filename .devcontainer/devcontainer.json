@@ -18,5 +18,6 @@
   // have access to files in the /workspace/<github-repo-name> folder. 
   //
   // Install Julia packages as required by the provided Project.toml
+  "waitFor": "postCreateCommand",
   "postCreateCommand": "/home/codespace/.juliaup/bin/julia -e 'using Pkg; Pkg.activate(\".\"); Pkg.instantiate()'"
 }
