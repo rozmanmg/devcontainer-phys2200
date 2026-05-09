@@ -2,9 +2,8 @@ FROM mcr.microsoft.com/devcontainers/universal:latest
 
 # Non-root user of the image
 ARG USERNAME="codespace"
-# ARG USERNAME="vscode"
 
-# Use the same version of python as the jupyter running in the container
+# Use the same version of python under Conda as the jupyter running in the container
 ARG PYTHONVER="3.12.1"
 
 # Update everything
@@ -16,8 +15,6 @@ ARG PYTHONVER="3.12.1"
 # Install software for converting jupyter notebooks to pdf
 # RUN apt-get update && apt-get install -y inkscape pandoc texlive-xetex
 
-# # Install julia; set a juliaup channel to keep it the same for the whole semester
-# RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
 # Install julia; set a julia version to keep it the same for the whole semester
 RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.12.6" 
 
@@ -25,22 +22,15 @@ RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y 
 RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
 && juliaup config startupselfupdateinterval 0 && juliaup config versionsdbupdateinterval 0"
 
-# URL for downloads of the course-specific files
-# ARG URL="https://www.phys.uconn.edu/~rozman/Courses/P2200_26F/downloads"
-
-# Add startup.jl specific for the course
+# Add startup.jl 
 RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config"
 COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/config/startup.jl
-# RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config \
-# && wget --tries=2 --timeout=2 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl || true "
 
 # Prepare reproducible python environment for PythonPlot
-# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
-# RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
 RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} matplotlib ipywidgets -y && conda clean --all -y || true"
 
-# (Pre)install selected Julia packages.
-# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
+# Install Julia
+# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\"])'"
 # RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
@@ -48,5 +38,4 @@ RUN su - ${USERNAME} -c "jupyter labextension disable \"@jupyterlab/apputils-ext
 
 # Add bash setting specific for the class
 COPY --chown=${USERNAME}:${USERNAME} bash_phys2200.txt /home/${USERNAME}/.bash_phys2200
-# RUN su - ${USERNAME} -c "wget --tries=2 --timeout=2 ${URL}/bash_phys2200.txt -O ~/.bash_phys2200 || true"
 RUN su - ${USERNAME} -c 'echo "[ -f ~/.bash_phys2200 ] && . ~/.bash_phys2200" >> ~/.bashrc || true'
