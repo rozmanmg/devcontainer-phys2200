@@ -27,7 +27,8 @@ RUN su - ${USERNAME} -c "mkdir -p ~/.julia/config"
 COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/config/startup.jl
 
 # Prepare reproducible python environment for PythonPlot
-RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} matplotlib ipywidgets -y && conda clean --all -y || true"
+RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} matplotlib jupyter ipywidgets -y \ 
+&& conda clean --all -y || true"
 
 # Install Julia
 RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\"])'"
