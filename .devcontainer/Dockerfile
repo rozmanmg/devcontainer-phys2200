@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/devcontainers/universal:latest
 ARG USERNAME="codespace"
 # ARG USERNAME="vscode"
 
+# Use the same version of python as the jupyter running in the container
+ARG PYTHONVER="3.12.1"
+
 # Update everything
 # RUN apt-get update && apt-get upgrade -y
 
@@ -11,7 +14,7 @@ ARG USERNAME="codespace"
 # RUN apt-get update && apt-get install -y ffmpeg
 
 # Install software for converting jupyter notebooks to pdf
-# apt-get install inkscape pandoc texlive-xetex
+# RUN apt-get update && apt-get install -y inkscape pandoc texlive-xetex
 
 # # Install julia; set a juliaup channel to keep it the same for the whole semester
 # RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.11" 
@@ -32,8 +35,9 @@ COPY --chown=${USERNAME}:${USERNAME} sample.startup.jl /home/${USERNAME}/.julia/
 # && wget --tries=2 --timeout=2 ${URL}/sample.startup.jl -O ~/.julia/config/startup.jl || true "
 
 # Prepare reproducible python environment for PythonPlot
-RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
-RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
+# RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"Conda\"); using Conda; Conda.add_channel(\"conda-forge\"); Conda.add(\"matplotlib\")'"
+# RUN su - ${USERNAME} -c "~/.julia/conda/3/x86_64/bin/conda update --all -y && ~/.julia/conda/3/x86_64/bin/conda clean --all -y" 
+RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda install python=${PYTHONVER} matplotlib ipywidgets -y && conda clean --all -y || true"
 
 # (Pre)install selected Julia packages.
 # RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PythonPlot\"]); using PythonPlot'"
