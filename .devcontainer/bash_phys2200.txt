@@ -7,5 +7,6 @@ then
 fi
 
 alias ll='/usr/bin/ls -l --color=never'
+alias ls='/usr/bin/ls --color=never'
 
 export JULIA_NUM_THREADS=auto
