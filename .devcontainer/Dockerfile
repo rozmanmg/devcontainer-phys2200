@@ -6,6 +6,9 @@ ARG USERNAME="codespace"
 # Use the same version of python under Conda as the jupyter running in the container
 ARG PYTHONVER="3.12.1"
 
+# Set a julia version to keep it the same for the whole semester
+ARG JULIAVER="1.12.6"
+
 # Use the same version of IJulia for the whole semester
 ARG IJULIAVER="\"1.34.4\""
 
@@ -19,7 +22,7 @@ ARG IJULIAVER="\"1.34.4\""
 # RUN apt-get update && apt-get install --no-install-recommends -y inkscape pandoc texlive-xetex
 
 # Install julia; set a julia version to keep it the same for the whole semester
-RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel 1.12.6" 
+RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel ${JULIAVER}" 
 
 # Disable all juliaup automatic updates
 RUN su - ${USERNAME} -c "juliaup config backgroundselfupdateinterval 0 \
