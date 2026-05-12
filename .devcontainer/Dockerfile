@@ -19,7 +19,7 @@ ARG IJULIAVER="\"1.34.4\""
 # RUN apt-get update && apt-get install --no-install-recommends -y ffmpeg
 
 # Install software for converting jupyter notebooks to pdf
-# RUN apt-get update && apt-get install --no-install-recommends -y inkscape pandoc texlive-xetex
+# RUN apt-get update && apt-get install --no-install-recommends -y inkscape pandoc texlive-xetex texlive-fonts-recommended texlive-plain-generic
 
 # Install julia; set a julia version to keep it the same for the whole semester
 RUN su - ${USERNAME} -c "curl -fsSL https://install.julialang.org | sh -s -- -y --default-channel ${JULIAVER}" 
