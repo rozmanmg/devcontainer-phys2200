@@ -6,6 +6,9 @@ ARG USERNAME="codespace"
 # Use the same version of python under Conda as the jupyter running in the container
 ARG PYTHONVER="3.12.1"
 
+# Use the same version of IJulia for the whole semester
+ARG IJULIAVER="1.34.4"
+
 # Update everything
 # RUN apt-get update && apt-get upgrade -y
 
@@ -31,7 +34,8 @@ RUN su - ${USERNAME} -c "conda config --append channels conda-forge && conda ins
 && conda clean --all -y || true"
 
 # Install IJulia and prepare the default IJulia kernel with JULIA_NUM_THREAS="auto" 
-RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(\"IJulia\"); using IJulia; installkernel(\"julia\", env=Dict(\"JULIA_NUM_THREADS\"=>\"auto\"))'"
+RUN su - ${USERNAME} -c "julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.add(name=\"IJulia\", version=${IJULIAVER}); \
+using IJulia; installkernel(\"julia\", env=Dict(\"JULIA_NUM_THREADS\"=>\"auto\"))'"
 # RUN su - ${USERNAME} -c "julia -e 'ENV[\"PYTHON\"]=\"\"; using Pkg; Pkg.activate(temp=true); Pkg.add([\"IJulia\", \"PyPlot\"]); using PyPlot'"
 
 # Disable Jupyter annoyances
