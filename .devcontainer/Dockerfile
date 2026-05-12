@@ -7,7 +7,7 @@ ARG USERNAME="codespace"
 ARG PYTHONVER="3.12.1"
 
 # Use the same version of IJulia for the whole semester
-ARG IJULIAVER="1.34.4"
+ARG IJULIAVER="\"1.34.4\""
 
 # Update everything
 # RUN apt-get update && apt-get upgrade -y
